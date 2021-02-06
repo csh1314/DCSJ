@@ -170,7 +170,7 @@ AS
 	SELECT @p_leave_total =p_leave_total,@p_leave_days =p_leave_days,@p_daywords=p_daywords FROM tb_plan WHERE u_id=@u_id
 -- 从临时表中删除该行 当日学习单词-1
 DELETE FROM ##temp_todaywords WHERE u_id =@u_id AND w_id = @w_id
-IF EXISTS (SELECT * FROM tb_study_record WHERE u_id ='6592330246' AND study_date =@cur_date) -- 当日有学习记录，则为更新记录
+IF EXISTS (SELECT * FROM tb_study_record WHERE u_id =@u_id AND study_date =@cur_date) -- 当日有学习记录，则为更新记录
 	IF @isRight = 0
 		-- 选错
 		BEGIN
